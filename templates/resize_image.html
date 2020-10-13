@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="{% url 'image_list' %}">Назад к списку</a>
+<h1>{{ image }}</h1>
+<form method="post">
+    {{ errors }}
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <div>
+                <strong>{{ error }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div>
+        <label for="width">Ширина</label>
+        <input type="text" name="width" id="width">
+        {% if form.width.errors %}
+            {% for error in form.width.errors %}
+                <div>
+                    <strong>{{ error }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div>
+        <label for="height">Высота</label>
+        <input type="text" name="height" id="height">
+        {% if form.height.errors %}
+            {% for error in form.height.errors %}
+                <div>
+                    <strong>{{ error }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <button>Отправить</button>
+</form>
+<img src="
+{% if resized_img_url %}
+{{ resized_img_url }}
+{% else %}
+{{ image.image.url }}
+{% endif %}">
+</body>
+</html>

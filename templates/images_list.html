@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Images list</title>
+</head>
+<body>
+<a href="{% url 'upload' %}">Добавить изображение</a>
+{% if not image_list %}
+    <p>Нет доступных изображений</p>
+{% else %}
+    {% for image in image_list %}
+        <p><a href="{{ image.get_absolute_url }}">{{ image }}</a></p>
+    {% endfor %}
+{% endif %}
+</body>
+</html>

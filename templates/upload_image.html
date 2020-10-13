@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload image</title>
+</head>
+<body>
+<div>
+    <a href="{% url 'image_list' %}">Назад к списку</a>
+    <H1>Новое изображение</H1>
+        <form method="post" enctype="multipart/form-data">
+        {{ errors }}
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <div>
+                    <strong>{{ error }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div>
+            <label for="url">Ссылка</label>
+            <input id="url" name="url" type="text">
+            {% if form.url.errors %}
+                {% for error in form.url.errors %}
+                    <div>
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <label for="image">Файл</label>
+            <input id="image" name="image" type="file">
+            {% if form.image.errors %}
+                {% for error in form.image.errors %}
+                    <div>
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <button>Отправить</button>
+    </form>
+</div>
+</body>
+</html>
