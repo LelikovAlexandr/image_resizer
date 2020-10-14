@@ -18,6 +18,8 @@
     {% endif %}
     <div>
         <label for="width">Ширина</label>
+    </div>
+    <div>
         <input type="text" name="width" id="width">
         {% if form.width.errors %}
             {% for error in form.width.errors %}
@@ -29,6 +31,8 @@
     </div>
     <div>
         <label for="height">Высота</label>
+    </div>
+    <div>
         <input type="text" name="height" id="height">
         {% if form.height.errors %}
             {% for error in form.height.errors %}

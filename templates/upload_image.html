@@ -8,7 +8,7 @@
 <div>
     <a href="{% url 'image_list' %}">Назад к списку</a>
     <H1>Новое изображение</H1>
-        <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">
         {{ errors }}
         {% csrf_token %}
         {% if form.non_field_errors %}
@@ -20,6 +20,8 @@
         {% endif %}
         <div>
             <label for="url">Ссылка</label>
+        </div>
+        <div>
             <input id="url" name="url" type="text">
             {% if form.url.errors %}
                 {% for error in form.url.errors %}
@@ -31,6 +33,8 @@
         </div>
         <div>
             <label for="image">Файл</label>
+        </div>
+        <div>
             <input id="image" name="image" type="file">
             {% if form.image.errors %}
                 {% for error in form.image.errors %}
