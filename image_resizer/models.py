@@ -14,7 +14,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images/', blank=True)
 
     def get_absolute_url(self):
-        return reverse('image_detail', kwargs={'pk': self.pk})
+        return reverse('resize_image', kwargs={'pk': self.pk})
 
     def download_image(self, url):
         image = requests.get(url).content
@@ -22,7 +22,7 @@ class Image(models.Model):
             temp_file.write(image)
             self.image.save(url.split('/')[-1], File(temp_file))
 
-    def get_resize_image_url(self, width, height):
+    def get_resized_image_url(self, width, height):
         image = pilImage.open(self.image.path)
 
         if not width:

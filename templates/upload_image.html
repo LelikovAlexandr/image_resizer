@@ -9,7 +9,6 @@
     <a href="{% url 'image_list' %}">Назад к списку</a>
     <H1>Новое изображение</H1>
     <form method="post" enctype="multipart/form-data">
-        {{ errors }}
         {% csrf_token %}
         {% if form.non_field_errors %}
             {% for error in form.non_field_errors %}

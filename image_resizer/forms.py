@@ -1,15 +1,22 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from image_resizer.models import Image
+
 ALLOW_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif']
 
 
-class UploadImageForm(forms.Form):
+class UploadImageForm(forms.ModelForm):
     url = forms.URLField(label='Ссылка', required=False)
     image = forms.ImageField(label='Файл', required=False)
 
+    class Meta:
+        model = Image
+        fields = '__all__'
+
     def clean(self):
         data = self.cleaned_data
+        print(data)
         if bool(data.get('image')) == bool(data.get('url')):
             raise forms.ValidationError('Please fill one field')
 

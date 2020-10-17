@@ -77,7 +77,7 @@ class ResizeImageTests(TestCase):
         self.client.post(reverse('upload'),
                          data={
                              'url': 'https://www.w3.org/People/mimasa/test/imgformat/img/w3c_home.jpg'})
-        self.client.post(reverse('image_detail', kwargs={'pk': 1}),
+        self.client.post(reverse('resize_image', kwargs={'pk': 1}),
                          data={'width': 100, 'height': 200})
         is_create, resized_file = find_file('100x200_w3c_home')
         image = pilImage.open(resized_file)
@@ -89,7 +89,7 @@ class ResizeImageTests(TestCase):
         self.client.post(reverse('upload'),
                          data={
                              'url': 'https://www.w3.org/People/mimasa/test/imgformat/img/w3c_home.jpg'})
-        self.client.post(reverse('image_detail', kwargs={'pk': 1}),
+        self.client.post(reverse('resize_image', kwargs={'pk': 1}),
                          data={'width': 100})
         is_create, resized_file = find_file('100x66_w3c_home')
         image = pilImage.open(resized_file)
@@ -101,7 +101,7 @@ class ResizeImageTests(TestCase):
         self.client.post(reverse('upload'),
                          data={
                              'url': 'https://www.w3.org/People/mimasa/test/imgformat/img/w3c_home.jpg'})
-        self.client.post(reverse('image_detail', kwargs={'pk': 1}),
+        self.client.post(reverse('resize_image', kwargs={'pk': 1}),
                          data={'height': 100})
         is_create, resized_file = find_file('150x100_w3c_home')
         image = pilImage.open(resized_file)
