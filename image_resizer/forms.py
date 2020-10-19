@@ -16,7 +16,6 @@ class UploadImageForm(forms.ModelForm):
 
     def clean(self):
         data = self.cleaned_data
-        print(data)
         if bool(data.get('image')) == bool(data.get('url')):
             raise forms.ValidationError('Please fill one field')
 

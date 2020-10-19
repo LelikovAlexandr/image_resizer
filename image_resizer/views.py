@@ -48,6 +48,6 @@ class ResizeImage(FormMixin, DetailView):
         height = request.POST.get('height') or 0
         if form.is_valid() and (width or height):
             resized_img_url = image.get_resized_image_url(int(width), int(height))
-            return render(request, 'resize_image.html',
+            return render(request, self.template_name,
                           {'resized_img_url': resized_img_url, 'image': image, 'form': form})
         return render(request, self.template_name, {'form': form, 'image': image})
